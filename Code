@@ -1,0 +1,86 @@
+#include<iostream>
+#include<cstdlib>
+#include<set>
+using namespace std;
+
+void displayMagicSquare(int magicSquare[3][3]) {
+	// Display the current state of the magic square
+	cout << "----------" << endl;
+	for (int ROWS = 0; ROWS < 3; ROWS++) {
+    	cout << ROWS+1 << "| ";
+    	for (int COLUMNS = 0; COLUMNS < 3; COLUMNS++) {
+        	cout << magicSquare[ROWS][COLUMNS] << " ";
+    	}
+    	cout << "|" << endl;
+	}
+	cout << "----------" << endl;
+}
+
+int main() {
+    
+	int ROWS = 0;
+	int COLUMNS = 0;
+	int NUMBER;
+	int playerScore = 0;
+
+	int magicSquare[3][3];
+    
+	// Generate Magic Square
+	cout << "Magic Square \n   1 2 3" << endl;
+    
+	for (int ROWS = 0; ROWS < 3; ROWS++) {
+    	for (int COLUMNS = 0; COLUMNS < 3; COLUMNS++) {
+    	}
+	}
+    
+	displayMagicSquare(magicSquare);
+    
+	//ENTER NUMBERS
+	for (int i = 1; i <= 9; i++) {
+    	do {
+        	cout << "Enter Row (1-3): " ;
+        	cin >> ROWS ;
+        	cout << "Enter Column (1-3):" ;
+        	cin >> COLUMNS ;
+        	ROWS--;
+        	COLUMNS--;
+       	 
+    	} while (ROWS < 0 || ROWS > 2 || COLUMNS < 0 || COLUMNS > 2 || magicSquare[ROWS][COLUMNS] != 0);
+   	 
+    	cout << "Enter a number for ROW " << ROWS+1 << " and COLUMN " << COLUMNS+1 << ": ";
+    	cin >> NUMBER;
+    	magicSquare[ROWS][COLUMNS] = NUMBER;
+   	 
+    	displayMagicSquare(magicSquare);
+	}
+    
+	//bool isMagicSquare(int magicSquare[3][3]) {
+	int sum = magicSquare[0][0] + magicSquare[1][0] + magicSquare[2][0];
+	int sum1 = magicSquare[0][1] + magicSquare[1][1] + magicSquare[2][1];
+	int sum2 = magicSquare[0][2] + magicSquare[1][2] + magicSquare[2][2];
+	int sum3 = magicSquare[0][0] + magicSquare[0][1] + magicSquare[0][2];
+	int sum4 = magicSquare[1][0] + magicSquare[1][1] + magicSquare[1][2];
+	int sum5 = magicSquare[2][0] + magicSquare[2][1] + magicSquare[2][2];
+	int sum6 = magicSquare[0][0] + magicSquare[1][1] + magicSquare[2][2];
+	int sum7 = magicSquare[0][2] + magicSquare[1][1] + magicSquare[2][0];
+    
+	if (sum != 15 || sum1 != 15 || sum2 != 15 || sum3 != 15 ||
+    	sum4 != 15 || sum5 != 15 || sum6 != 15 || sum7 != 15) {
+   	return false;
+	}
+//} 	 
+ 	if (sum == 15 || sum1 == 15 || sum2 == 15 || sum3 == 15 ||
+    	sum4 == 15 || sum5 == 15 || sum6 == 15 || sum7 == 15) {
+    
+	playerScore++;
+	std ::cout << "\nYou Made a Magic Square! \n";
+	std ::cout << playerScore;
+  }
+  else if (sum != 15 || sum1 != 15 || sum2 != 15 || sum3 != 15 ||
+    	sum4 != 15 || sum5 != 15 || sum6 != 15 || sum7 != 15)  
+	{
+	std ::cout << "\nNot a Magic Square :( \n Try Again" ;
+	std ::cout << playerScore;
+	}
+ 
+   return 0; }
